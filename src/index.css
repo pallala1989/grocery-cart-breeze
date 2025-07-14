@@ -8,47 +8,54 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 120 20% 98%;
-    --foreground: 140 10% 15%;
+    --background: 140 20% 98%;
+    --foreground: 140 10% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 140 10% 15%;
+    --card-foreground: 140 10% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 140 10% 15%;
+    --popover-foreground: 140 10% 12%;
 
-    --primary: 135 80% 28%;
+    --primary: 142 76% 36%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 120 30% 95%;
+    --secondary: 140 20% 95%;
     --secondary-foreground: 140 10% 15%;
 
-    --muted: 120 30% 95%;
-    --muted-foreground: 140 15% 45%;
+    --muted: 140 20% 95%;
+    --muted-foreground: 140 15% 50%;
 
-    --accent: 110 40% 92%;
+    --accent: 142 65% 92%;
     --accent-foreground: 140 10% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 120 20% 88%;
-    --input: 120 20% 88%;
-    --ring: 135 80% 28%;
+    --border: 140 20% 88%;
+    --input: 140 20% 88%;
+    --ring: 142 76% 36%;
     
-    /* Grocery store specific colors */
-    --fresh-green: 125 70% 45%;
-    --organic-green: 135 80% 28%;
-    --light-green: 120 30% 95%;
-    --cart-orange: 25 90% 55%;
+    /* SV Provisions brand colors */
+    --sv-primary: 142 76% 36%;
+    --sv-secondary: 39 98% 55%;
+    --sv-accent: 220 70% 50%;
+    --fresh-green: 142 76% 36%;
+    --organic-green: 142 76% 36%;
+    --light-green: 140 20% 95%;
+    --cart-orange: 39 98% 55%;
+    --brand-blue: 220 70% 50%;
     
-    /* Gradients */
-    --gradient-fresh: linear-gradient(135deg, hsl(125 70% 45%), hsl(135 80% 28%));
-    --gradient-subtle: linear-gradient(180deg, hsl(120 20% 98%), hsl(120 30% 95%));
+    /* Enhanced gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(142 76% 36%), hsl(220 70% 50%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(140 20% 98%));
+    --gradient-fresh: linear-gradient(135deg, hsl(142 76% 36%), hsl(39 98% 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(140 20% 98%), hsl(140 20% 95%));
     
-    /* Shadows */
-    --shadow-card: 0 4px 12px hsl(135 80% 28% / 0.1);
-    --shadow-hover: 0 8px 25px hsl(135 80% 28% / 0.15);
+    /* Enhanced shadows */
+    --shadow-card: 0 4px 20px hsl(142 76% 36% / 0.08);
+    --shadow-hover: 0 8px 30px hsl(142 76% 36% / 0.15);
+    --shadow-glow: 0 0 20px hsl(142 76% 36% / 0.2);
 
     --radius: 0.5rem;
 
@@ -79,7 +86,7 @@ All colors MUST be HSL.
     --popover: 140 15% 12%;
     --popover-foreground: 120 20% 95%;
 
-    --primary: 125 70% 45%;
+    --primary: 142 76% 50%;
     --primary-foreground: 140 15% 8%;
 
     --secondary: 140 15% 16%;
@@ -96,21 +103,28 @@ All colors MUST be HSL.
 
     --border: 140 15% 20%;
     --input: 140 15% 20%;
-    --ring: 125 70% 45%;
+    --ring: 142 76% 50%;
     
-    /* Dark mode grocery colors */
-    --fresh-green: 125 60% 55%;
-    --organic-green: 125 70% 45%;
+    /* Dark mode SV Provisions colors */
+    --sv-primary: 142 76% 50%;
+    --sv-secondary: 39 98% 65%;
+    --sv-accent: 220 70% 60%;
+    --fresh-green: 142 76% 50%;
+    --organic-green: 142 76% 50%;
     --light-green: 140 15% 16%;
-    --cart-orange: 25 80% 60%;
+    --cart-orange: 39 98% 65%;
+    --brand-blue: 220 70% 60%;
     
     /* Dark gradients */
-    --gradient-fresh: linear-gradient(135deg, hsl(125 60% 55%), hsl(125 70% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(142 76% 50%), hsl(220 70% 60%));
+    --gradient-card: linear-gradient(145deg, hsl(140 15% 12%), hsl(140 15% 16%));
+    --gradient-fresh: linear-gradient(135deg, hsl(142 76% 50%), hsl(39 98% 65%));
     --gradient-subtle: linear-gradient(180deg, hsl(140 15% 8%), hsl(140 15% 12%));
     
     /* Dark shadows */
-    --shadow-card: 0 4px 12px hsl(0 0% 0% / 0.3);
-    --shadow-hover: 0 8px 25px hsl(0 0% 0% / 0.4);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
+    --shadow-hover: 0 8px 30px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 20px hsl(142 76% 50% / 0.3);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -129,5 +143,42 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--accent)));
+    min-height: 100vh;
+  }
+
+  /* Custom animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 5px hsl(var(--primary) / 0.5); }
+    50% { box-shadow: 0 0 20px hsl(var(--primary) / 0.8); }
+  }
+
+  @keyframes slide-in {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.5s ease-out;
+  }
+
+  /* Glass effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 }

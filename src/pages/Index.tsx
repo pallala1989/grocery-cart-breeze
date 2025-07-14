@@ -5,7 +5,7 @@ import { SearchFilter } from "@/components/SearchFilter";
 import { ProductCard } from "@/components/ProductCard";
 import { Cart } from "@/components/Cart";
 import { CheckoutForm } from "@/components/CheckoutForm";
-import { products, Product } from "@/data/products";
+import { products, Product, ProductVariant } from "@/data/products";
 import { CartItem, CustomerInfo, OrderData } from "@/types";
 import { generateOrderPDF, downloadPDF } from "@/utils/pdfGenerator";
 import { sendOrderEmail, getEmailJSSetupInstructions } from "@/utils/emailService";
@@ -32,32 +32,35 @@ const Index = () => {
     });
   }, [searchTerm, selectedCategory]);
 
-  const addToCart = (product: Product, quantity: number) => {
+  const addToCart = (product: Product, quantity: number, variant: ProductVariant) => {
     setCartItems(prev => {
-      const existingItem = prev.find(item => item.id === product.id);
+      const itemKey = `${product.id}-${variant.size}`;
+      const existingItem = prev.find(item => item.id === itemKey);
       
       if (existingItem) {
         return prev.map(item =>
-          item.id === product.id
+          item.id === itemKey
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
         return [...prev, {
-          id: product.id,
+          id: itemKey,
           nameEn: product.nameEn,
           nameTe: product.nameTe,
-          price: product.price,
-          unit: product.unit,
-          unitTe: product.unitTe,
-          quantity
+          price: variant.price,
+          unit: variant.unit,
+          unitTe: variant.unitTe,
+          quantity,
+          variant: variant.size,
+          variantTe: variant.sizeTe
         }];
       }
     });
     
     toast({
       title: "Added to cart / కార్ట్‌కు జోడించబడింది",
-      description: `${product.nameEn} (${quantity} ${product.unit})`,
+      description: `${product.nameEn} - ${variant.size} (${quantity} ${variant.unit})`,
     });
   };
 
@@ -149,12 +152,15 @@ const Index = () => {
       <Header cartItemsCount={cartItemsCount} onCartClick={() => setIsCartOpen(true)} />
       
       <main className="container mx-auto px-4 py-6">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-foreground mb-2">
-            Fresh Groceries Delivered
+        <div className="text-center mb-8 animate-slide-in">
+          <h2 className="text-4xl font-bold bg-gradient-fresh bg-clip-text text-transparent mb-4">
+            SV Provisions - Fresh Groceries Delivered
           </h2>
-          <p className="text-lg text-muted-foreground">
-            తాజా కిరాణా సామాను ఇంటికి చేరుస్తాం
+          <p className="text-xl text-muted-foreground mb-2">
+            ఎస్వీ ప్రొవిజన్స్ - తాజా కిరాణా సామాను ఇంటికి చేరుస్తాం
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Premium quality products at affordable prices / సరసమైన ధరలకు ప్రీమియం నాణ్యత ఉత్పాదనలు
           </p>
         </div>
 

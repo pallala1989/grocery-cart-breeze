@@ -52,10 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				'sv-primary': 'hsl(var(--sv-primary))',
+				'sv-secondary': 'hsl(var(--sv-secondary))',
+				'sv-accent': 'hsl(var(--sv-accent))',
 				'fresh-green': 'hsl(var(--fresh-green))',
 				'organic-green': 'hsl(var(--organic-green))',
 				'light-green': 'hsl(var(--light-green))',
 				'cart-orange': 'hsl(var(--cart-orange))',
+				'brand-blue': 'hsl(var(--brand-blue))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -92,7 +96,21 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'slide-in': 'slide-in 0.5s ease-out'
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-fresh': 'var(--gradient-fresh)',
+				'gradient-subtle': 'var(--gradient-subtle)'
+			},
+			boxShadow: {
+				'card': 'var(--shadow-card)',
+				'hover': 'var(--shadow-hover)',
+				'glow': 'var(--shadow-glow)'
 			}
 		}
 	},
