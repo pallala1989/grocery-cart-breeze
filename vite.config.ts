@@ -5,6 +5,10 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Set the base path for deployment to GitHub Pages
+  // This should be your repository name surrounded by slashes.
+  base: "/grocery-cart-breeze/", // <--- ADD THIS LINE
+
   server: {
     host: "::",
     port: 8080,
