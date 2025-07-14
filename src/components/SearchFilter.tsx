@@ -33,7 +33,6 @@ export function SearchFilter({
           <SelectValue placeholder="All Categories / అన్ని విభాగాలు" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="">All Categories / అన్ని విభాగాలు</SelectItem>
           {categories.map((category) => (
             <SelectItem key={category} value={category}>
               {category}
