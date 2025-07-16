@@ -2,36 +2,18 @@ import { ShoppingCart, Store, Menu, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 interface HeaderProps {
-  cartItemsCount: number;
-  onCartClick: () => void;
-  onNavigate?: (page: string) => void;
+  cartItemCount?: number;
+  onCartClick?: () => void;
 }
 
-export function Header({ cartItemsCount, onCartClick, onNavigate }: HeaderProps) {
-  const handleNavigation = (page: string) => {
-    if (onNavigate) {
-      onNavigate(page);
-    }
-  };
+export function Header({ cartItemCount = 0, onCartClick }: HeaderProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const NavItems = () => (
-    <>
-      <Button variant="ghost" onClick={() => handleNavigation('home')} className="text-foreground hover:text-sv-primary">
-        Home / హోమ్
-      </Button>
-      <Button variant="ghost" onClick={() => handleNavigation('products')} className="text-foreground hover:text-sv-primary">
-        Products / ఉత్పాదనలు
-      </Button>
-      <Button variant="ghost" onClick={() => handleNavigation('about')} className="text-foreground hover:text-sv-primary">
-        About / గురించి
-      </Button>
-      <Button variant="ghost" onClick={() => handleNavigation('contact')} className="text-foreground hover:text-sv-primary">
-        Contact / సంప్రదింపు
-      </Button>
-    </>
-  );
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-card">
@@ -67,27 +49,40 @@ export function Header({ cartItemsCount, onCartClick, onNavigate }: HeaderProps)
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1 mr-4">
-          <NavItems />
+          <Link to="/" className="text-foreground hover:text-primary transition-colors px-3 py-2">
+            Home / హోమ్
+          </Link>
+          <Link to="/about" className="text-foreground hover:text-primary transition-colors px-3 py-2">
+            About / గురించి
+          </Link>
+          <Link to="/contact" className="text-foreground hover:text-primary transition-colors px-3 py-2">
+            Contact / సంప్రదింపు
+          </Link>
+          <Link to="/admin" className="text-foreground hover:text-primary transition-colors px-3 py-2">
+            Admin
+          </Link>
         </nav>
 
         {/* Cart Button */}
-        <Button 
-          variant="outline" 
-          size="sm" 
-          onClick={onCartClick}
-          className="relative mr-2 border-sv-primary/30 hover:border-sv-primary hover:bg-sv-primary/10"
-        >
-          <ShoppingCart className="h-4 w-4" />
-          <span className="hidden sm:inline ml-2">Cart / కార్ట్</span>
-          {cartItemsCount > 0 && (
-            <Badge 
-              variant="destructive" 
-              className="absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-xs bg-cart-orange border-0 animate-pulse"
-            >
-              {cartItemsCount}
-            </Badge>
-          )}
-        </Button>
+        {onCartClick && (
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={onCartClick}
+            className="relative mr-2 hover:bg-primary/10"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            <span className="hidden sm:inline ml-2">Cart / కార్ట్</span>
+            {cartItemCount > 0 && (
+              <Badge 
+                variant="destructive" 
+                className="absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-xs animate-pulse"
+              >
+                {cartItemCount}
+              </Badge>
+            )}
+          </Button>
+        )}
 
         {/* Mobile Menu */}
         <Sheet>
@@ -107,8 +102,43 @@ export function Header({ cartItemsCount, onCartClick, onNavigate }: HeaderProps)
                 </p>
               </div>
               
-              <nav className="flex flex-col space-y-2">
-                <NavItems />
+              <nav className="flex flex-col space-y-4 p-4">
+                <Link 
+                  to="/" 
+                  className={`text-foreground hover:text-primary transition-colors py-2 ${
+                    location.pathname === '/' ? 'text-primary font-medium' : ''
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home / హోమ్
+                </Link>
+                <Link 
+                  to="/about" 
+                  className={`text-foreground hover:text-primary transition-colors py-2 ${
+                    location.pathname === '/about' ? 'text-primary font-medium' : ''
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About / గురించి
+                </Link>
+                <Link 
+                  to="/contact" 
+                  className={`text-foreground hover:text-primary transition-colors py-2 ${
+                    location.pathname === '/contact' ? 'text-primary font-medium' : ''
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact / సంప్రదింపు
+                </Link>
+                <Link 
+                  to="/admin" 
+                  className={`text-foreground hover:text-primary transition-colors py-2 ${
+                    location.pathname === '/admin' ? 'text-primary font-medium' : ''
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Admin
+                </Link>
               </nav>
 
               <div className="border-t pt-4 space-y-2">

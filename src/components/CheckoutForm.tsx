@@ -22,7 +22,7 @@ export function CheckoutForm({ items, isOpen, onClose, onSubmitOrder }: Checkout
 
   if (!isOpen) return null;
 
-  const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const total = items.reduce((sum, item) => sum + (item.price * item.orderQuantity), 0);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,9 +57,14 @@ export function CheckoutForm({ items, isOpen, onClose, onSubmitOrder }: Checkout
             <h3 className="font-medium">Order Summary / ఆర్డర్ సారాంశం</h3>
             <div className="bg-muted p-3 rounded-lg space-y-2">
               {items.map((item) => (
-                <div key={item.id} className="flex justify-between text-sm">
-                  <span>{item.nameEn} x {item.quantity}</span>
-                  <span>₹{item.price * item.quantity}</span>
+                <div key={item.id} className="space-y-1">
+                  <div className="flex justify-between text-sm">
+                    <span>{item.nameEn} ({item.quantity} {item.unit}) x {item.orderQuantity}</span>
+                    <span>₹{item.price * item.orderQuantity}</span>
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {item.nameTe} ({item.quantityTe} {item.unitTe})
+                  </div>
                 </div>
               ))}
               <div className="border-t pt-2 flex justify-between font-bold">

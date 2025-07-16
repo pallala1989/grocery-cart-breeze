@@ -1,11 +1,34 @@
-export interface CartItem {
+export interface ProductVariant {
+  id: string;
+  quantity: string;
+  quantityTe: string;
+  unit: string;
+  unitTe: string;
+  price: number;
+}
+
+export interface Product {
   id: string;
   nameEn: string;
   nameTe: string;
+  category: string;
+  categoryTe: string;
+  image: string;
+  variants: ProductVariant[];
+}
+
+export interface CartItem {
+  id: string;
+  productId: string;
+  variantId: string;
+  nameEn: string;
+  nameTe: string;
   price: number;
+  quantity: string;
+  quantityTe: string;
   unit: string;
   unitTe: string;
-  quantity: number;
+  orderQuantity: number;
 }
 
 export interface CustomerInfo {

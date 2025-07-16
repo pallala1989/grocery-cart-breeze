@@ -1,10 +1,10 @@
 import emailjs from '@emailjs/browser';
 import { OrderData } from '@/types';
 
-// EmailJS configuration - you'll need to set these up
-const SERVICE_ID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-const TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
-const PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
+// EmailJS configuration - Replace with your actual values
+const SERVICE_ID = 'service_sv_provisions'; // Your EmailJS service ID
+const TEMPLATE_ID = 'template_order_notification'; // Your EmailJS template ID  
+const PUBLIC_KEY = 'your_public_key_here'; // Your EmailJS public key
 
 export async function sendOrderEmail(orderData: OrderData, pdfBlob: Blob): Promise<boolean> {
   try {
@@ -13,7 +13,7 @@ export async function sendOrderEmail(orderData: OrderData, pdfBlob: Blob): Promi
     // For production, you'd need a backend service to handle PDF attachments
     
     const emailData = {
-      to_email: 'shop@example.com', // Shop owner's email
+      to_email: 'prsr4u@gmail.com', // Shop owner's email
       customer_name: orderData.customer.name,
       customer_mobile: orderData.customer.mobile,
       order_id: orderData.orderId,
@@ -21,9 +21,9 @@ export async function sendOrderEmail(orderData: OrderData, pdfBlob: Blob): Promi
       order_time: orderData.orderDate.toLocaleTimeString(),
       total_amount: orderData.total,
       items_list: orderData.items.map(item => 
-        `${item.nameEn} (${item.nameTe}) - Qty: ${item.quantity} ${item.unit} - ₹${item.price * item.quantity}`
+        `${item.nameEn} (${item.nameTe}) - Size: ${item.quantity} ${item.unit} - Qty: ${item.orderQuantity} - ₹${item.price * item.orderQuantity}`
       ).join('\n'),
-      total_items: orderData.items.reduce((sum, item) => sum + item.quantity, 0)
+      total_items: orderData.items.reduce((sum, item) => sum + item.orderQuantity, 0)
     };
 
     // Initialize EmailJS (you only need to do this once)

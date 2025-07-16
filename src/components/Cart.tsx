@@ -25,8 +25,8 @@ export function Cart({
 }: CartProps) {
   if (!isOpen) return null;
 
-  const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+  const total = items.reduce((sum, item) => sum + (item.price * item.orderQuantity), 0);
+  const totalItems = items.reduce((sum, item) => sum + item.orderQuantity, 0);
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
@@ -55,8 +55,11 @@ export function Cart({
                   <div className="flex-1">
                     <h4 className="font-medium text-sm">{item.nameEn}</h4>
                     <p className="text-xs text-muted-foreground">{item.nameTe}</p>
+                    <p className="text-xs text-muted-foreground">
+                      Size: {item.quantity} {item.unit} / {item.quantityTe} {item.unitTe}
+                    </p>
                     <p className="text-sm font-medium text-primary">
-                      ₹{item.price} per {item.unit}
+                      ₹{item.price} per pack
                     </p>
                   </div>
                   
@@ -64,18 +67,18 @@ export function Cart({
                     <Button 
                       variant="outline" 
                       size="sm"
-                      onClick={() => onUpdateQuantity(item.id, Math.max(1, item.quantity - 1))}
+                      onClick={() => onUpdateQuantity(item.id, Math.max(1, item.orderQuantity - 1))}
                       className="h-6 w-6 p-0"
                     >
                       <Minus className="h-3 w-3" />
                     </Button>
                     <span className="w-8 text-center text-sm font-medium">
-                      {item.quantity}
+                      {item.orderQuantity}
                     </span>
                     <Button 
                       variant="outline" 
                       size="sm"
-                      onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
+                      onClick={() => onUpdateQuantity(item.id, item.orderQuantity + 1)}
                       className="h-6 w-6 p-0"
                     >
                       <Plus className="h-3 w-3" />

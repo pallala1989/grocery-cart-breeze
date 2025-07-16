@@ -1,6 +1,7 @@
 export interface ProductVariant {
-  size: string;
-  sizeTe: string;
+  id: string;
+  quantity: string;
+  quantityTe: string;
   price: number;
   unit: string;
   unitTe: string;
@@ -14,7 +15,7 @@ export interface Product {
   categoryTe: string;
   basePrice: number;
   variants: ProductVariant[];
-  image?: string;
+  image: string;
   inStock: boolean;
   description?: string;
   descriptionTe?: string;
@@ -37,7 +38,7 @@ export const products: Product[] = [
     categoryTe: 'అన్నం & ధాన్యాలు',
     basePrice: 30,
     variants: [
-      { size: '250g', sizeTe: '250 గ్రాములు', price: 30, unit: 'pack', unitTe: 'ప్యాక్' },
+      { id: '1', quantity: '250g', quantityTe: '250 గ్రాములు', price: 30, unit: 'pack', unitTe: 'ప్యాక్' },
       { size: '500g', sizeTe: '500 గ్రాములు', price: 55, unit: 'pack', unitTe: 'ప్యాక్' },
       { size: '1kg', sizeTe: '1 కిలో', price: 120, unit: 'kg', unitTe: 'కిలో' },
       { size: '5kg', sizeTe: '5 కిలోలు', price: 580, unit: 'bag', unitTe: 'బ్యాగ్' },
@@ -60,6 +61,7 @@ export const products: Product[] = [
       { size: '5kg', sizeTe: '5 కిలోలు', price: 290, unit: 'bag', unitTe: 'బ్యాగ్' },
       { size: '10kg', sizeTe: '10 కిలోలు', price: 580, unit: 'bag', unitTe: 'బ్యాగ్' },
     ],
+    image: basmatiriceImg,
     inStock: true
   },
   {
@@ -75,6 +77,7 @@ export const products: Product[] = [
       { size: '5kg', sizeTe: '5 కిలోలు', price: 190, unit: 'bag', unitTe: 'బ్యాగ్' },
       { size: '10kg', sizeTe: '10 కిలోలు', price: 380, unit: 'bag', unitTe: 'బ్యాగ్' },
     ],
+    image: basmatiriceImg,
     inStock: true
   },
 
@@ -107,6 +110,7 @@ export const products: Product[] = [
       { size: '500g', sizeTe: '500 గ్రాములు', price: 60, unit: 'pack', unitTe: 'ప్యాక్' },
       { size: '1kg', sizeTe: '1 కిలో', price: 120, unit: 'kg', unitTe: 'కిలో' },
     ],
+    image: toordalImg,
     inStock: true
   },
   {
@@ -121,6 +125,7 @@ export const products: Product[] = [
       { size: '500g', sizeTe: '500 గ్రాములు', price: 50, unit: 'pack', unitTe: 'ప్యాక్' },
       { size: '1kg', sizeTe: '1 కిలో', price: 100, unit: 'kg', unitTe: 'కిలో' },
     ],
+    image: toordalImg,
     inStock: true
   },
 
@@ -168,6 +173,7 @@ export const products: Product[] = [
       { size: '5kg', sizeTe: '5 కిలోలు', price: 90, unit: 'bag', unitTe: 'బ్యాగ్' },
       { size: '10kg', sizeTe: '10 కిలోలు', price: 180, unit: 'bag', unitTe: 'బ్యాగ్' },
     ],
+    image: onionsImg,
     inStock: true
   },
   {
@@ -183,6 +189,7 @@ export const products: Product[] = [
       { size: '500g', sizeTe: '500 గ్రాములు', price: 40, unit: 'pack', unitTe: 'ప్యాక్' },
       { size: '1kg', sizeTe: '1 కిలో', price: 80, unit: 'kg', unitTe: 'కిలో' },
     ],
+    image: tomatoesImg,
     inStock: true
   },
 
@@ -214,6 +221,7 @@ export const products: Product[] = [
       { size: '1kg', sizeTe: '1 కిలో', price: 180, unit: 'kg', unitTe: 'కిలో' },
       { size: '2kg', sizeTe: '2 కిలోలు', price: 350, unit: 'kg', unitTe: 'కిలో' },
     ],
+    image: bananasImg,
     inStock: true
   },
   {
@@ -228,6 +236,7 @@ export const products: Product[] = [
       { size: '1kg', sizeTe: '1 కిలో', price: 120, unit: 'kg', unitTe: 'కిలో' },
       { size: '2kg', sizeTe: '2 కిలోలు', price: 230, unit: 'kg', unitTe: 'కిలో' },
     ],
+    image: bananasImg,
     inStock: true
   },
 
@@ -261,6 +270,7 @@ export const products: Product[] = [
       { size: '500g', sizeTe: '500 గ్రాములు', price: 150, unit: 'pack', unitTe: 'ప్యాక్' },
       { size: '1kg', sizeTe: '1 కిలో', price: 300, unit: 'kg', unitTe: 'కిలో' },
     ],
+    image: turmericImg,
     inStock: true
   },
   {
@@ -276,6 +286,7 @@ export const products: Product[] = [
       { size: '500g', sizeTe: '500 గ్రాములు', price: 90, unit: 'pack', unitTe: 'ప్యాక్' },
       { size: '1kg', sizeTe: '1 కిలో', price: 180, unit: 'kg', unitTe: 'కిలో' },
     ],
+    image: turmericImg,
     inStock: true
   },
 
@@ -292,6 +303,7 @@ export const products: Product[] = [
       { size: '1L', sizeTe: '1 లీటర్', price: 150, unit: 'bottle', unitTe: 'బాటిల్' },
       { size: '5L', sizeTe: '5 లీటర్లు', price: 720, unit: 'can', unitTe: 'డబ్బా' },
     ],
+    image: turmericImg,
     inStock: true
   },
   {
@@ -306,6 +318,7 @@ export const products: Product[] = [
       { size: '500ml', sizeTe: '500 మిల్లీలీటర్లు', price: 100, unit: 'bottle', unitTe: 'బాటిల్' },
       { size: '1L', sizeTe: '1 లీటర్', price: 200, unit: 'bottle', unitTe: 'బాటిల్' },
     ],
+    image: turmericImg,
     inStock: true
   },
   {
@@ -320,6 +333,7 @@ export const products: Product[] = [
       { size: '500g', sizeTe: '500 గ్రాములు', price: 250, unit: 'jar', unitTe: 'జార్' },
       { size: '1kg', sizeTe: '1 కిలో', price: 500, unit: 'jar', unitTe: 'జార్' },
     ],
+    image: turmericImg,
     inStock: true
   }
 ];
