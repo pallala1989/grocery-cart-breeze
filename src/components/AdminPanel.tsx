@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Plus, Edit, Trash2, Save, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -24,10 +25,11 @@ export function AdminPanel({ products, onUpdateProducts }: AdminPanelProps) {
       category: "",
       categoryTe: "",
       image: "",
+      inStock: true,
       variants: [{
         id: "1",
-        quantity: "1",
-        quantityTe: "1",
+        size: "1kg",
+        sizeTe: "1 కేజీ",
         unit: "kg",
         unitTe: "కేజీ",
         price: 0
@@ -68,8 +70,8 @@ export function AdminPanel({ products, onUpdateProducts }: AdminPanelProps) {
     if (!editingProduct) return;
     const newVariant: ProductVariant = {
       id: Date.now().toString(),
-      quantity: "1",
-      quantityTe: "1",
+      size: "1kg",
+      sizeTe: "1 కేజీ",
       unit: "kg",
       unitTe: "కేజీ",
       price: 0
@@ -217,11 +219,11 @@ export function AdminPanel({ products, onUpdateProducts }: AdminPanelProps) {
                   <Card key={variant.id} className="p-3">
                     <div className="grid grid-cols-5 gap-2 items-end">
                       <div>
-                        <Label className="text-xs">Quantity</Label>
+                        <Label className="text-xs">Size</Label>
                         <Input
-                          value={variant.quantity}
-                          onChange={(e) => updateVariant(index, 'quantity', e.target.value)}
-                          placeholder="1"
+                          value={variant.size}
+                          onChange={(e) => updateVariant(index, 'size', e.target.value)}
+                          placeholder="1kg"
                           size="sm"
                         />
                       </div>

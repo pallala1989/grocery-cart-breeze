@@ -1,3 +1,4 @@
+
 import { X, Plus, Minus, Trash2, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -56,10 +57,10 @@ export function Cart({
                     <h4 className="font-medium text-sm">{item.nameEn}</h4>
                     <p className="text-xs text-muted-foreground">{item.nameTe}</p>
                     <p className="text-xs text-muted-foreground">
-                      Size: {item.quantity} {item.unit} / {item.quantityTe} {item.unitTe}
+                      Size: {item.size} ({item.sizeTe})
                     </p>
                     <p className="text-sm font-medium text-primary">
-                      ₹{item.price} per pack
+                      ₹{item.price} per {item.unit}
                     </p>
                   </div>
                   

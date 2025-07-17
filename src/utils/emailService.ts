@@ -1,3 +1,4 @@
+
 import emailjs from '@emailjs/browser';
 import { OrderData } from '@/types';
 
@@ -21,7 +22,7 @@ export async function sendOrderEmail(orderData: OrderData, pdfBlob: Blob): Promi
       order_time: orderData.orderDate.toLocaleTimeString(),
       total_amount: orderData.total,
       items_list: orderData.items.map(item => 
-        `${item.nameEn} (${item.nameTe}) - Size: ${item.quantity} ${item.unit} - Qty: ${item.orderQuantity} - ₹${item.price * item.orderQuantity}`
+        `${item.nameEn} - Size: ${item.size} - Qty: ${item.orderQuantity} - Rs ${item.price * item.orderQuantity}`
       ).join('\n'),
       total_items: orderData.items.reduce((sum, item) => sum + item.orderQuantity, 0)
     };
@@ -63,7 +64,7 @@ export const getEmailJSSetupInstructions = () => {
     
     Hello,
     
-    A new order has been received from Fresh Market:
+    A new order has been received from SV Provisions:
     
     Order ID: {{order_id}}
     Date: {{order_date}} at {{order_time}}
@@ -76,11 +77,11 @@ export const getEmailJSSetupInstructions = () => {
     {{items_list}}
     
     Total Items: {{total_items}}
-    Total Amount: ₹{{total_amount}}
+    Total Amount: Rs {{total_amount}}
     
     Please prepare the order for delivery/pickup.
     
     Best regards,
-    Fresh Market System
+    SV Provisions System
   `;
 };

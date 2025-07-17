@@ -1,7 +1,8 @@
+
 export interface ProductVariant {
   id: string;
-  quantity: string;
-  quantityTe: string;
+  size: string;
+  sizeTe: string;
   unit: string;
   unitTe: string;
   price: number;
@@ -15,6 +16,9 @@ export interface Product {
   categoryTe: string;
   image: string;
   variants: ProductVariant[];
+  inStock: boolean;
+  description?: string;
+  descriptionTe?: string;
 }
 
 export interface CartItem {
@@ -24,8 +28,8 @@ export interface CartItem {
   nameEn: string;
   nameTe: string;
   price: number;
-  quantity: string;
-  quantityTe: string;
+  size: string;
+  sizeTe: string;
   unit: string;
   unitTe: string;
   orderQuantity: number;

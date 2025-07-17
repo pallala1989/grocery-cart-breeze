@@ -1,3 +1,4 @@
+
 import { ShoppingCart, Store, Menu, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,12 +15,19 @@ export function Header({ cartItemCount = 0, onCartClick }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  const handlePhoneClick = () => {
+    window.open('tel:+919876543210', '_self');
+  };
+
+  const handleEmailClick = () => {
+    window.open('mailto:prsr4u@gmail.com', '_self');
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-card">
       <div className="container flex h-16 items-center">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
+        <Link to="/" className="flex items-center space-x-3">
           <div className="p-2 bg-gradient-fresh rounded-lg animate-pulse-glow">
             <Store className="h-6 w-6 text-white" />
           </div>
@@ -31,20 +39,26 @@ export function Header({ cartItemCount = 0, onCartClick }: HeaderProps) {
               ఎస్వీ ప్రొవిజన్స్ / Fresh & Quality
             </p>
           </div>
-        </div>
+        </Link>
         
         <div className="flex-1" />
 
         {/* Contact Info - Hidden on mobile */}
         <div className="hidden md:flex items-center space-x-4 mr-4">
-          <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+          <button 
+            onClick={handlePhoneClick}
+            className="flex items-center space-x-1 text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+          >
             <Phone className="h-4 w-4" />
             <span>+91 98765 43210</span>
-          </div>
-          <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+          </button>
+          <button 
+            onClick={handleEmailClick}
+            className="flex items-center space-x-1 text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+          >
             <Mail className="h-4 w-4" />
             <span>prsr4u@gmail.com</span>
-          </div>
+          </button>
         </div>
         
         {/* Desktop Navigation */}
@@ -142,14 +156,20 @@ export function Header({ cartItemCount = 0, onCartClick }: HeaderProps) {
               </nav>
 
               <div className="border-t pt-4 space-y-2">
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <button 
+                  onClick={handlePhoneClick}
+                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors w-full text-left"
+                >
                   <Phone className="h-4 w-4" />
                   <span>+91 98765 43210</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                </button>
+                <button 
+                  onClick={handleEmailClick}
+                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors w-full text-left"
+                >
                   <Mail className="h-4 w-4" />
                   <span>prsr4u@gmail.com</span>
-                </div>
+                </button>
               </div>
             </div>
           </SheetContent>

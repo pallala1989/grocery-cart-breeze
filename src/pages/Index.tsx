@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -66,8 +67,8 @@ export default function Index() {
         nameEn: product.nameEn,
         nameTe: product.nameTe,
         price: variant.price,
-        quantity: variant.quantity,
-        quantityTe: variant.quantityTe,
+        size: variant.size,
+        sizeTe: variant.sizeTe,
         unit: variant.unit,
         unitTe: variant.unitTe,
         orderQuantity: orderQuantity
@@ -77,7 +78,7 @@ export default function Index() {
 
     toast({
       title: "Added to cart",
-      description: `${product.nameEn} (${variant.quantity} ${variant.unit}) has been added to your cart`,
+      description: `${product.nameEn} (${variant.size}) has been added to your cart`,
     });
   };
 

@@ -1,180 +1,185 @@
-import { Store, Users, Award, Leaf, Clock, MapPin } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Leaf, Heart, Users, Truck, Star, Clock } from "lucide-react";
 
 export default function About() {
+  const features = [
+    {
+      icon: <Leaf className="h-8 w-8 text-fresh-green" />,
+      title: "Fresh & Organic",
+      titleTe: "తాజా & సేంద్రీయ",
+      description: "We source the freshest produce directly from local farmers",
+      descriptionTe: "మేము స్థానిక రైతుల నుండి నేరుగా తాజా ఉత్పాదనలను సేకరిస్తాము"
+    },
+    {
+      icon: <Heart className="h-8 w-8 text-destructive" />,
+      title: "Quality Guaranteed",
+      titleTe: "నాణ్యత హామీ",
+      description: "Every product is carefully selected and quality checked",
+      descriptionTe: "ప్రతి ఉత్పాదనను జాగ్రత్తగా ఎంపిక చేసి నాణ్యత పరీక్షించుతాము"
+    },
+    {
+      icon: <Users className="h-8 w-8 text-brand-blue" />,
+      title: "Family Business",
+      titleTe: "కుటుంబ వ్యాపారం",
+      description: "Serving the community with love and care for generations",
+      descriptionTe: "తరతరాలుగా ప్రేమ మరియు శ్రద్ధతో సమాజానికి సేవ చేస్తున్నాము"
+    },
+    {
+      icon: <Truck className="h-8 w-8 text-cart-orange" />,
+      title: "Fast Delivery",
+      titleTe: "వేగవంతమైన డెలివరీ",
+      description: "Quick and reliable delivery service to your doorstep",
+      descriptionTe: "మీ ఇంటి వద్దకు వేగవంతమైన మరియు నమ్మకమైన డెలివరీ సేవ"
+    }
+  ];
+
+  const stats = [
+    { number: "5000+", label: "Happy Customers", labelTe: "సంతోషకరమైన కస్టమర్లు" },
+    { number: "10+", label: "Years Experience", labelTe: "సంవత్సరాల అనుభవం" },
+    { number: "500+", label: "Products", labelTe: "ఉత్పాదనలు" },
+    { number: "24/7", label: "Support", labelTe: "మద్దతు" }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-subtle">
-      <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen bg-background">
+      <Header cartItemCount={0} onCartClick={() => {}} />
+      
+      <main className="container mx-auto px-4 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-16 animate-slide-in">
-          <h1 className="text-4xl font-bold bg-gradient-fresh bg-clip-text text-transparent mb-4">
+        <div className="text-center mb-12 animate-slide-in">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-fresh bg-clip-text text-transparent mb-4">
             About SV Provisions
           </h1>
-          <h2 className="text-2xl text-muted-foreground mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-muted-foreground mb-6">
             ఎస్వీ ప్రొవిజన్స్ గురించి
           </h2>
-          <p className="text-lg text-foreground max-w-3xl mx-auto">
-            Your trusted neighborhood grocery store committed to providing fresh, quality products 
-            at affordable prices. Serving the community with dedication and care.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Your trusted neighborhood grocery store providing fresh and quality products 
+            at affordable prices for over a decade.
           </p>
-          <p className="text-md text-muted-foreground max-w-3xl mx-auto mt-2">
-            తాజా, నాణ్యమైన ఉత్పాదనలను సరసమైన ధరలకు అందించడంలో నిబద్ధతతో ఉన్న మీ నమ్మకమైన కిరాణా దుకాణం.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4 leading-relaxed">
+            దశాబ్దానికి మించి సరసమైన ధరలకు తాజా మరియు నాణ్యమైన ఉత్పాదనలను 
+            అందించే మీ నమ్మకమైన కిరాణా దుకాణం.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          <Card className="text-center p-6 bg-gradient-card border-0 shadow-card hover:shadow-hover transition-all duration-300 animate-float">
-            <CardContent className="pt-6">
-              <div className="w-16 h-16 bg-gradient-fresh rounded-full flex items-center justify-center mx-auto mb-4">
-                <Leaf className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-sv-primary mb-2">Fresh Quality</h3>
-              <p className="text-sm text-muted-foreground mb-2">తాజా నాణ్యత</p>
-              <p className="text-sm">
-                We source the freshest produce directly from local farmers and trusted suppliers.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center p-6 bg-gradient-card border-0 shadow-card hover:shadow-hover transition-all duration-300 animate-float" style={{animationDelay: '0.2s'}}>
-            <CardContent className="pt-6">
-              <div className="w-16 h-16 bg-gradient-fresh rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-sv-primary mb-2">Best Prices</h3>
-              <p className="text-sm text-muted-foreground mb-2">అత్యుత్తম ధరలు</p>
-              <p className="text-sm">
-                Competitive pricing without compromising on quality. Value for your money.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center p-6 bg-gradient-card border-0 shadow-card hover:shadow-hover transition-all duration-300 animate-float" style={{animationDelay: '0.4s'}}>
-            <CardContent className="pt-6">
-              <div className="w-16 h-16 bg-gradient-fresh rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-sv-primary mb-2">Community First</h3>
-              <p className="text-sm text-muted-foreground mb-2">సమాజం మొదట</p>
-              <p className="text-sm">
-                Serving our community with dedication, trust, and personalized service.
-              </p>
-            </CardContent>
-          </Card>
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          {stats.map((stat, index) => (
+            <Card 
+              key={index} 
+              className="text-center animate-slide-in bg-gradient-card shadow-card hover:shadow-hover transition-all duration-300"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
+                <div className="text-sm font-medium">{stat.label}</div>
+                <div className="text-xs text-muted-foreground">{stat.labelTe}</div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        {/* Story Section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <h2 className="text-3xl font-bold text-sv-primary mb-6">Our Story / మా కథ</h2>
-            <div className="space-y-4 text-foreground">
-              <p>
-                SV Provisions started as a small family business with a simple mission: 
-                to provide fresh, quality groceries to our neighbors at fair prices.
-              </p>
-              <p>
-                ఎస్వీ ప్రొవిజన్స్ ఒక చిన్న కుటుంబ వ్యాపారంగా ప్రారంభమైంది, ఒక సాధారణ లక్ష్యంతో: 
-                మా పొరుగువారికి తాజా, నాణ్యమైన కిరాణా సామాగ్రిని న్యాయమైన ధరలకు అందించడం.
-              </p>
-              <p>
-                Over the years, we've grown while maintaining our core values of quality, 
-                affordability, and exceptional customer service. Today, we're proud to be 
-                your trusted grocery partner.
-              </p>
-              <p className="text-muted-foreground">
-                సంవత్సరాలుగా, మేము నాణ్యత, సరసమైన ధర మరియు అసాధారణ కస్టమర్ సేవ యొక్క 
-                మా ప్రధాన విలువలను కొనసాగిస్తూ అభివృద్ధి చెందాము.
-              </p>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <Card className="p-6 text-center bg-sv-primary text-white">
-              <CardContent className="pt-6">
-                <div className="text-3xl font-bold">5+</div>
-                <div className="text-sm">Years of Service</div>
-                <div className="text-xs opacity-80">సేవా సంవత్సరాలు</div>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center bg-cart-orange text-white">
-              <CardContent className="pt-6">
-                <div className="text-3xl font-bold">500+</div>
-                <div className="text-sm">Happy Customers</div>
-                <div className="text-xs opacity-80">సంతృప్త కస్టమర్లు</div>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center bg-brand-blue text-white">
-              <CardContent className="pt-6">
-                <div className="text-3xl font-bold">200+</div>
-                <div className="text-sm">Products</div>
-                <div className="text-xs opacity-80">ఉత్పాదనలు</div>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center bg-fresh-green text-white">
-              <CardContent className="pt-6">
-                <div className="text-3xl font-bold">24/7</div>
-                <div className="text-sm">Online Service</div>
-                <div className="text-xs opacity-80">ఆన్‌లైన్ సేవ</div>
-              </CardContent>
-            </Card>
+        {/* Features Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-fresh bg-clip-text text-transparent">
+            Why Choose Us? / మమమ్ములను ఎందుకు ఎంచుకోవాలి?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {features.map((feature, index) => (
+              <Card 
+                key={index} 
+                className="animate-slide-in bg-gradient-card shadow-card hover:shadow-hover transition-all duration-300 hover:scale-105"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    {feature.icon}
+                    <div>
+                      <CardTitle className="text-lg">{feature.title}</CardTitle>
+                      <p className="text-sm text-muted-foreground">{feature.titleTe}</p>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm mb-2">{feature.description}</p>
+                  <p className="text-xs text-muted-foreground">{feature.descriptionTe}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
 
-        {/* Location & Hours */}
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card className="p-6 bg-gradient-card border-0 shadow-card">
-            <CardContent className="pt-6">
-              <div className="flex items-center mb-4">
-                <MapPin className="h-6 w-6 text-sv-primary mr-2" />
-                <h3 className="text-xl font-bold text-sv-primary">Location / స్థానం</h3>
+        {/* Mission Section */}
+        <Card className="animate-slide-in bg-gradient-card shadow-card mb-12">
+          <CardHeader>
+            <CardTitle className="text-2xl text-center bg-gradient-fresh bg-clip-text text-transparent">
+              Our Mission / మా లక్ష్యం
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="text-center space-y-4">
+            <p className="text-lg leading-relaxed">
+              To provide fresh, quality groceries to our community while supporting local farmers 
+              and maintaining affordable prices for all families.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              స్థానిక రైతులకు మద్దతు ఇస్తూ మరియు అన్ని కుటుంబాలకు సరసమైన ధరలను 
+              కొనసాగిస్తూ మా సమాజానికి తాజా, నాణ్యమైన కిరాణా సామాను అందించడం.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Values Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="animate-slide-in bg-gradient-card shadow-card hover:shadow-hover transition-all duration-300">
+            <CardHeader>
+              <div className="flex items-center justify-center mb-4">
+                <Star className="h-10 w-10 text-cart-orange" />
               </div>
-              <div className="space-y-2">
-                <p className="font-medium">SV Provisions</p>
-                <p className="text-sm text-muted-foreground">
-                  123 Main Street, Local Area<br />
-                  City, State - 500001<br />
-                  Near Central Bus Station
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  సెంట్రల్ బస్ స్టేషన్ దగ్గర<br />
-                  123 మెయిన్ స్ట్రీట్, లోకల్ ఏరియా
-                </p>
-              </div>
+              <CardTitle className="text-center">Excellence / శ్రేష్ఠత</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-sm">
+                We strive for excellence in everything we do, from product selection to customer service.
+              </p>
             </CardContent>
           </Card>
 
-          <Card className="p-6 bg-gradient-card border-0 shadow-card">
-            <CardContent className="pt-6">
-              <div className="flex items-center mb-4">
-                <Clock className="h-6 w-6 text-sv-primary mr-2" />
-                <h3 className="text-xl font-bold text-sv-primary">Business Hours / సమయం</h3>
+          <Card className="animate-slide-in bg-gradient-card shadow-card hover:shadow-hover transition-all duration-300">
+            <CardHeader>
+              <div className="flex items-center justify-center mb-4">
+                <Heart className="h-10 w-10 text-destructive" />
               </div>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="font-medium">Monday - Saturday</span>
-                  <span>7:00 AM - 9:00 PM</span>
-                </div>
-                <div className="flex justify-between text-muted-foreground text-sm">
-                  <span>సోమవారం - శనివారం</span>
-                  <span>ఉదయం 7:00 - రాత్రి 9:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Sunday</span>
-                  <span>8:00 AM - 8:00 PM</span>
-                </div>
-                <div className="flex justify-between text-muted-foreground text-sm">
-                  <span>ఆదివారం</span>
-                  <span>ఉదయం 8:00 - రాత్రి 8:00</span>
-                </div>
+              <CardTitle className="text-center">Trust / నమ్మకం</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-sm">
+                Building lasting relationships with our customers through honesty and reliability.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="animate-slide-in bg-gradient-card shadow-card hover:shadow-hover transition-all duration-300">
+            <CardHeader>
+              <div className="flex items-center justify-center mb-4">
+                <Clock className="h-10 w-10 text-brand-blue" />
               </div>
+              <CardTitle className="text-center">Service / సేవ</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-sm">
+                Committed to providing exceptional service and support to our valued customers.
+              </p>
             </CardContent>
           </Card>
         </div>
-      </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }

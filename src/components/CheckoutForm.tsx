@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { User, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -59,11 +60,11 @@ export function CheckoutForm({ items, isOpen, onClose, onSubmitOrder }: Checkout
               {items.map((item) => (
                 <div key={item.id} className="space-y-1">
                   <div className="flex justify-between text-sm">
-                    <span>{item.nameEn} ({item.quantity} {item.unit}) x {item.orderQuantity}</span>
+                    <span>{item.nameEn} ({item.size}) x {item.orderQuantity}</span>
                     <span>₹{item.price * item.orderQuantity}</span>
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    {item.nameTe} ({item.quantityTe} {item.unitTe})
+                    {item.nameTe} ({item.sizeTe})
                   </div>
                 </div>
               ))}

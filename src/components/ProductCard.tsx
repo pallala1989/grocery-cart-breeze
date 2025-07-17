@@ -1,14 +1,15 @@
+
 import { useState } from "react";
 import { Plus, Minus, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Product, ProductVariant } from "@/data/products";
+import { Product, ProductVariant } from "@/types";
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart: (product: Product, quantity: number, variant: ProductVariant) => void;
+  onAddToCart: (productId: string, variantId: string, orderQuantity: number) => void;
 }
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
@@ -16,7 +17,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(product.variants[0]);
 
   const handleAddToCart = () => {
-    onAddToCart(product, quantity, selectedVariant);
+    onAddToCart(product.id, selectedVariant.id, quantity);
     setQuantity(1);
   };
 
@@ -74,7 +75,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
               </SelectTrigger>
               <SelectContent>
                 {product.variants.map((variant) => (
-                  <SelectItem key={variant.size} value={variant.size}>
+                  <SelectItem key={variant.id} value={variant.size}>
                     {variant.size} ({variant.sizeTe})
                   </SelectItem>
                 ))}

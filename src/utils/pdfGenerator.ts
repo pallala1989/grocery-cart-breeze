@@ -1,3 +1,4 @@
+
 import jsPDF from 'jspdf';
 import { OrderData } from '@/types';
 
@@ -12,7 +13,7 @@ export function generateOrderPDF(orderData: OrderData): Blob {
   doc.setFontSize(24);
   doc.text('SV PROVISIONS', 105, 20, { align: 'center' });
   doc.setFontSize(16);
-  doc.text('Order Receipt / ఆర్డర్ రశీదు', 105, 30, { align: 'center' });
+  doc.text('Order Receipt', 105, 30, { align: 'center' });
   
   // Reset text color
   doc.setTextColor(0, 0, 0);
@@ -61,11 +62,12 @@ export function generateOrderPDF(orderData: OrderData): Blob {
     }
     
     doc.setTextColor(0, 0, 0);
-    doc.text(`${item.nameEn} (${item.nameTe})`, 20, yPosition);
-    doc.text(`${item.quantity} ${item.unit}`, 100, yPosition);
+    // Use only English names to avoid character encoding issues
+    doc.text(`${item.nameEn}`, 20, yPosition);
+    doc.text(`${item.size}`, 100, yPosition);
     doc.text(`${item.orderQuantity}`, 120, yPosition);
-    doc.text(`₹${item.price}`, 140, yPosition);
-    doc.text(`₹${item.price * item.orderQuantity}`, 170, yPosition);
+    doc.text(`Rs ${item.price}`, 140, yPosition);
+    doc.text(`Rs ${item.price * item.orderQuantity}`, 170, yPosition);
     yPosition += 10;
   });
   
@@ -73,7 +75,8 @@ export function generateOrderPDF(orderData: OrderData): Blob {
   doc.line(20, yPosition, 190, yPosition);
   yPosition += 10;
   doc.setFontSize(12);
-  doc.text(`Total Amount: ₹${orderData.total}`, 120, yPosition);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`Total Amount: Rs ${orderData.total}`, 120, yPosition);
   
   // Footer with styling
   yPosition += 20;
@@ -84,7 +87,7 @@ export function generateOrderPDF(orderData: OrderData): Blob {
   doc.setFontSize(12);
   doc.text('Thank you for shopping with SV Provisions!', 105, yPosition + 10, { align: 'center' });
   doc.setFontSize(10);
-  doc.text('SV Provisions తో కొనుగోలు చేసినందుకు ధన్యవాదాలు!', 105, yPosition + 18, { align: 'center' });
+  doc.text('Fresh groceries delivered to your doorstep', 105, yPosition + 18, { align: 'center' });
   
   return doc.output('blob');
 }
